@@ -1,0 +1,30 @@
+<%- include('./layout/header.ejs', { title: 'Bienvenue sur mon blog' })  %>
+
+<div class="container">
+
+  <% if (locals.user) { %>
+    <form action="" method="POST">
+      <div class="mb-2">
+        <label for="title">Titre</label>
+        <input class="form-control" type="text" id="title" name="title">
+      </div>
+      <div class="mb-2">
+        <label for="content">Contenu</label>
+        <textarea class="form-control" type="text" id="content" name="content"></textarea>
+      </div>
+      <button class="btn btn-primary">Ajoutez l'article</button>
+    </form>
+  <% } %>
+
+  <h1 class="my-5">Bienvenue sur mon blog</h1>
+  <div class="row row-cols-2">
+    <% for (const post of posts) { %>
+      <div class="col mb-2">
+        <%- include('./shared/post.ejs', {post}) %>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include('./layout/footer.ejs')  %>
+
